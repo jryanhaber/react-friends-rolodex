@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
+import 'cirrus-ui';
 
 // pull in all of your friends from facebook
 // enable filters that do not exist in facebook
@@ -46,10 +47,29 @@ class App extends Component {
         )
       );
   }
+
+  handleClick() {
+    alert('sign in started');
+  }
+
   render() {
     return (
       <div className="App">
-        <button> Sign In with Facebook </button>
+        <button
+          class="text-blue-600 bg-blue-100 btn--lg pull-right"
+          style={{
+            right: '0px ',
+            position: 'relative',
+            margin: '10px',
+            marginLeft: '50vw'
+          }}
+          onClick={() => {
+            this.handleClick();
+          }}
+        >
+          Sign In with Facebook
+        </button>
+
         {this.state.friends.map((friend) => {
           return <div key={friend.id}>{friend.name}</div>;
         })}
