@@ -49,6 +49,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <button> Sign In with Facebook </button>
         {this.state.friends.map((friend) => {
           return <div key={friend.id}>{friend.name}</div>;
         })}
