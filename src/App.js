@@ -31,42 +31,28 @@ class App extends Component {
     console.log('component did mount');
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
-      // console.log(response);
-      // the response from the fetch is this response cors object with a readable stream as a body, which wont exactly show in the console.
-      // console.log(response.body);
-      // but when converted to json() it changes to this promise object which has a result, and the result is the array.  Thats the array we want to use initially to set our app state as the users object.
-      // console.log(response.json());
-      // so by passing the response to a new function which then returns the response.json() ( conversion ) we in essence transform the property that we are passing through this function, like taking the response and passing to a function sort() which returns the sorted array.
-      // so this following statement says, then after the returned function completes, take what is returned by it ( response.json ), and pass that as a property called users and console log it
-
       .then((friends) =>
-        this.setState(
-          () => {
-            return { friends: friends };
-          },
-
-          () => {
-            console.log(this.state);
-          }
-        )
+        this.setState(() => {
+          return { friends: friends };
+        })
       );
   }
 
-  handleClick() {
-    alert('sign in started');
-  }
+  handleClick = () => {};
 
-  handleOnChange(event) {
-    // filter creates a new array from whatever passes the logical test it is given, so this creates the filtered list.
+  handleOnSearchChange = (event) => {
     const searchField = event.target.value.toLocaleLowerCase();
     this.setState(() => {
       return { searchField };
     });
-  }
+  };
 
   render() {
-    const filteredFriends = this.state.friends.filter((friend) => {
-      return friend.name.toLocaleLowerCase().includes(this.state.searchField);
+    const { friends, searchField } = this.state;
+    const { handleOnSearchChange } = this;
+
+    const filteredFriends = friends.filter((friend) => {
+      return friend.name.toLocaleLowerCase().includes(searchField);
     });
     return (
       <div className="App">
@@ -88,7 +74,7 @@ class App extends Component {
           className="search-box"
           type="search"
           placeholder="search friends"
-          onChange={(event) => this.handleOnChange(event)}
+          onChange={(event) => handleOnSearchChange(event)}
         ></input>
         {filteredFriends.map((friend) => {
           return <div key={friend.id}>{friend.name}</div>;
