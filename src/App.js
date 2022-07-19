@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
 import 'cirrus-ui';
+/*global FB*/
 
 // pull in all of your friends from facebook
 // enable filters that do not exist in facebook
@@ -20,11 +21,20 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      friends: []
+      friends: [],
+      fbSignedInID: '',
+      fbSignedInName: '',
+      accessToken: ''
     };
   }
 
   componentDidMount() {
+    // check if user is already logged in
+    // FB.getLoginStatus(function (response) {
+    //   this.statusChangeCallback(response);
+    // });
+
+    // get dummy data
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
       // console.log(response);
@@ -48,28 +58,31 @@ class App extends Component {
       );
   }
 
-  handleClick() {
-    alert('sign in started');
-  }
+  // statusChangeCallback(response) {
+  //   console.log('statusChangeCallback');
+  //   console.log(response);
+  //   // The response object is returned with a status field that lets the
+  //   // app know the current login status of the person.
+  //   // Full docs on the response object can be found in the documentation
+  //   // for FB.getLoginStatus().
+  //   if (response.status === 'connected') {
+  //     // Logged into your app and Facebook.
+  //     console.log('Welcome!  Fetching your information.... ');
+  //     FB.api('/me', function (response) {
+  //       console.log('Successful login for: ' + response.name);
+  //       document.getElementById('status').innerHTML =
+  //         'Thanks for logging in, ' + response.name + '!';
+  //     });
+  //   } else {
+  //     // The person is not logged into your app or we are unable to tell.
+  //     document.getElementById('status').innerHTML =
+  //       'Please log ' + 'into this app.';
+  //   }
+  // }
 
   render() {
     return (
       <div className="App">
-        <button
-          class="text-blue-600 bg-blue-100 btn--lg pull-right"
-          style={{
-            right: '0px ',
-            position: 'relative',
-            margin: '10px',
-            marginLeft: '50vw'
-          }}
-          onClick={() => {
-            this.handleClick();
-          }}
-        >
-          Sign In with Facebook
-        </button>
-
         {this.state.friends.map((friend) => {
           return <div key={friend.id}>{friend.name}</div>;
         })}
