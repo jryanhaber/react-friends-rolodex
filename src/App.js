@@ -20,11 +20,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      friends: []
+      friends: [],
+      filter: '',
+      filteredFriends: []
     };
+    console.log('constructer');
   }
 
   componentDidMount() {
+    console.log('component did mount');
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
       // console.log(response);
@@ -52,7 +56,25 @@ class App extends Component {
     alert('sign in started');
   }
 
+  handleOnChange(event) {
+    // filter creates a new array from whatever passes the logical test it is given, so this creates the filtered list.
+    const searchString = event.target.value.toLocaleLowerCase();
+    const filteredFriends = this.state.friends.filter((friend) => {
+      return friend.name.toLocaleLowerCase().includes(event.target.value);
+    });
+    console.log(this.state);
+    this.setState(
+      () => {
+        return { filteredFriends: filteredFriends };
+      },
+      () => {
+        // callback for after state update
+      }
+    );
+  }
+
   render() {
+    console.log('render called');
     return (
       <div className="App">
         <button
@@ -69,10 +91,19 @@ class App extends Component {
         >
           Sign In with Facebook
         </button>
-
-        {this.state.friends.map((friend) => {
-          return <div key={friend.id}>{friend.name}</div>;
-        })}
+        <input
+          className="search-box"
+          type="search"
+          placeholder="search friends"
+          onChange={(event) => this.handleOnChange(event)}
+        ></input>
+        {this.state.filteredFriends
+          ? this.state.filteredFriends.map((friend) => {
+              return <div key={friend.id}>{friend.name}</div>;
+            })
+          : this.state.friends.map((friend) => {
+              return <div key={friend.id}>{friend.name}</div>;
+            })}
       </div>
     );
   }
