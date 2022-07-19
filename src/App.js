@@ -21,7 +21,7 @@ class App extends Component {
     super();
     this.state = {
       friends: [],
-      filter: '',
+      searchField: '',
       filteredFriends: []
     };
     console.log('constructer');
@@ -58,23 +58,16 @@ class App extends Component {
 
   handleOnChange(event) {
     // filter creates a new array from whatever passes the logical test it is given, so this creates the filtered list.
-    const searchString = event.target.value.toLocaleLowerCase();
-    const filteredFriends = this.state.friends.filter((friend) => {
-      return friend.name.toLocaleLowerCase().includes(event.target.value);
+    const searchField = event.target.value.toLocaleLowerCase();
+    this.setState(() => {
+      return { searchField };
     });
-    console.log(this.state);
-    this.setState(
-      () => {
-        return { filteredFriends: filteredFriends };
-      },
-      () => {
-        // callback for after state update
-      }
-    );
   }
 
   render() {
-    console.log('render called');
+    const filteredFriends = this.state.friends.filter((friend) => {
+      return friend.name.toLocaleLowerCase().includes(this.state.searchField);
+    });
     return (
       <div className="App">
         <button
@@ -97,13 +90,9 @@ class App extends Component {
           placeholder="search friends"
           onChange={(event) => this.handleOnChange(event)}
         ></input>
-        {this.state.filteredFriends
-          ? this.state.filteredFriends.map((friend) => {
-              return <div key={friend.id}>{friend.name}</div>;
-            })
-          : this.state.friends.map((friend) => {
-              return <div key={friend.id}>{friend.name}</div>;
-            })}
+        {filteredFriends.map((friend) => {
+          return <div key={friend.id}>{friend.name}</div>;
+        })}
       </div>
     );
   }
