@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
-import 'cirrus-ui';
 import CardList from './components/card-list/card-list.component.jsx';
 import SearchBox from './components/search-box/search-box.component.jsx';
+import SideBar from './components/sidebar.component.jsx';
+// import 'semantic-ui-css/semantic.min.css';
 
 // pull in all of your friends from facebook
 // enable filters that do not exist in facebook
@@ -34,9 +35,14 @@ class App extends Component {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
       .then((friends) =>
-        this.setState(() => {
-          return { friends: friends };
-        })
+        this.setState(
+          () => {
+            return { friends: friends };
+          },
+          () => {
+            console.log(this.state);
+          }
+        )
       );
   }
 
@@ -58,31 +64,34 @@ class App extends Component {
     });
     return (
       <div className="App">
-        <button
-          class="text-blue-600 bg-blue-100 btn--lg pull-right"
-          style={{
-            right: '0px ',
-            position: 'relative',
-            margin: '10px',
-            marginLeft: '50vw'
-          }}
-          onClick={() => {
-            this.handleClick();
-          }}
-        >
-          Sign In with Facebook
-        </button>
-
-        <SearchBox
-          onChangeHandler={handleOnSearchChange}
-          className="search-box"
-          placeholder="search friends"
-        />
-
-        <CardList filteredFriends={filteredFriends}></CardList>
+        <SideBar>
+          <SearchBox
+            onChangeHandler={handleOnSearchChange}
+            className="search-box"
+            placeholder="search friends"
+          />
+          <CardList filteredFriends={filteredFriends}></CardList>
+        </SideBar>
       </div>
     );
   }
 }
 
 export default App;
+
+// WIP Facebook Login
+
+//  <button
+//    class="text-blue-600 bg-blue-100 btn--lg pull-right"
+//    style={{
+//      right: '0px ',
+//      position: 'relative',
+//      margin: '10px',
+//      marginLeft: '50vw'
+//    }}
+//    onClick={() => {
+//      this.handleClick();
+//    }}
+//  >
+//    Sign In with Facebook
+//  </button>;
