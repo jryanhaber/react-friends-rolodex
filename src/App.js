@@ -3,6 +3,7 @@ import './App.css';
 import React, { Component } from 'react';
 import 'cirrus-ui';
 import CardList from './components/card-list/card-list.component.jsx';
+import SearchBox from './components/search-box/search-box.component.jsx';
 
 // pull in all of your friends from facebook
 // enable filters that do not exist in facebook
@@ -41,8 +42,8 @@ class App extends Component {
 
   handleClick = () => {};
 
-  handleOnSearchChange = (event) => {
-    const searchField = event.target.value.toLocaleLowerCase();
+  handleOnSearchChange = (e) => {
+    const searchField = e.target.value.toLocaleLowerCase();
     this.setState(() => {
       return { searchField };
     });
@@ -71,12 +72,13 @@ class App extends Component {
         >
           Sign In with Facebook
         </button>
-        <input
+
+        <SearchBox
+          onChangeHandler={handleOnSearchChange}
           className="search-box"
-          type="search"
           placeholder="search friends"
-          onChange={(event) => handleOnSearchChange(event)}
-        ></input>
+        />
+
         <CardList filteredFriends={filteredFriends}></CardList>
       </div>
     );
