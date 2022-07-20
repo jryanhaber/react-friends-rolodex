@@ -3,13 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Crypto from './routes/money.routes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="crypto" element={<Crypto />} />
+        <Route path="invoices" element={<App />} />
+        <Route path="/friend-lists" element={<App />} />
+        <Route path="/add-friends" element={<App />} />
+        <Route path="/goals" element={<App />} />
+        <Route path="/crypto" element={<App />} />
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );

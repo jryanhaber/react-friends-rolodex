@@ -28,6 +28,12 @@ const SideBar = ({ children }) => {
             visible={visible}
             width="thin"
           >
+            <Link to="/">
+              <Menu.Item as="a">
+                <Icon name="home" />
+                Home
+              </Menu.Item>
+            </Link>
             <Link to="/friend-lists">
               <Menu.Item as="a">
                 <Icon name="users" />
@@ -46,7 +52,7 @@ const SideBar = ({ children }) => {
                 Goals
               </Menu.Item>
             </Link>
-            <Link to="/money">
+            <Link to="/crypto">
               <Menu.Item as="a">
                 <Icon name="money" />
                 Crypto
@@ -55,19 +61,20 @@ const SideBar = ({ children }) => {
           </Sidebar>
 
           <Sidebar.Pusher>
-            <Segment basic>
+            <Segment basic className="gradient-body">
               <Button
                 icon
-                style={{ left: '5px', display: 'flex' }}
+                style={{
+                  display: 'flex',
+                  position: 'absolute',
+                  left: '14px',
+                  top: '5px'
+                }}
                 onClick={(e, data) => setVisible(!visible)}
               >
                 <Icon name="align justify" />
               </Button>
-              <Header as="h3">Friend Module</Header>
-              <div>
-                Purpose: Build a quick prototype of a friends list page for a
-                social network.
-              </div>{' '}
+
               {children}
             </Segment>
           </Sidebar.Pusher>

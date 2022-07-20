@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import CardList from './components/card-list/card-list.component.jsx';
 import SearchBox from './components/search-box/search-box.component.jsx';
 import SideBar from './components/sidebar.component.jsx';
+import { Header, Segment } from 'semantic-ui-react';
 // import 'semantic-ui-css/semantic.min.css';
 
 // pull in all of your friends from facebook
@@ -63,14 +64,23 @@ class App extends Component {
       return friend.name.toLocaleLowerCase().includes(searchField);
     });
     return (
-      <div className="App">
+      <div className="App friendPage">
         <SideBar>
-          <SearchBox
-            onChangeHandler={handleOnSearchChange}
-            className="search-box"
-            placeholder="search friends"
-          />
-          <CardList filteredFriends={filteredFriends}></CardList>
+          <Segment fluid className="first-segment">
+            <Header as="h3">Friend Module</Header>
+            <p>
+              Purpose: Build a quick prototype of a friends list page for a
+              social network.
+            </p>{' '}
+            <SearchBox
+              onChangeHandler={handleOnSearchChange}
+              className="search-box"
+              placeholder="search friends"
+            />
+          </Segment>
+          <Segment>
+            <CardList filteredFriends={filteredFriends}></CardList>
+          </Segment>
         </SideBar>
       </div>
     );

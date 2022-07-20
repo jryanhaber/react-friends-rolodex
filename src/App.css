@@ -1,8 +1,9 @@
 .App {
   text-align: center;
-  background-color: #FF3CAC;
-    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
-    padding: 5px;
+}
+
+.first-segment{
+  margin-top: 30px !important;
 }
 
 .App-logo {
@@ -52,5 +53,22 @@
 }
 
 .cards {
-      justify-content: center;
+  justify-content: center;
+}
+
+main.App {
+  height: 100vh;
+}
+
+.friendPage{
+  background-color: black;
+}
+
+.ui.cards {
+  border-radius: 3px;
+  padding: 30px;
+}
+
+.gradient-body{
+    background: linear-gradient(45deg, #292387, #0f8e9399) !important;
 }
