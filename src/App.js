@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
 import 'cirrus-ui';
+import CardList from './components/card-list/card-list.component.jsx';
 
 // pull in all of your friends from facebook
 // enable filters that do not exist in facebook
@@ -76,9 +77,7 @@ class App extends Component {
           placeholder="search friends"
           onChange={(event) => handleOnSearchChange(event)}
         ></input>
-        {filteredFriends.map((friend) => {
-          return <div key={friend.id}>{friend.name}</div>;
-        })}
+        <CardList filteredFriends={filteredFriends}></CardList>
       </div>
     );
   }
