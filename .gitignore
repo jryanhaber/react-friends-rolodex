@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 rawData.js
+
+package-lock.json
