@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Crypto from './routes/money.routes';
+import Concepts from './components/concepts.components';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,7 @@ root.render(
         <Route path="/friend-lists" element={<App />} />
         <Route path="/add-friends" element={<App />} />
         <Route path="/goals" element={<App />} />
-        <Route path="/crypto" element={<App />} />
+        <Route path="/concepts" element={<Concepts />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

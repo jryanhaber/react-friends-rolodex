@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  Checkbox,
-  Grid,
-  Header,
-  Icon,
-  Menu,
-  Segment,
-  Sidebar,
-  Button
-} from 'semantic-ui-react';
+import { Grid, Icon, Menu, Segment, Sidebar, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const SideBar = ({ children }) => {
@@ -29,33 +20,39 @@ const SideBar = ({ children }) => {
             width="thin"
           >
             <Link to="/">
-              <Menu.Item as="a">
+              <Menu.Item as="span">
                 <Icon name="home" />
                 Home
-              </Menu.Item>
-            </Link>
-            <Link to="/friend-lists">
-              <Menu.Item as="a">
-                <Icon name="users" />
-                Friend List
-              </Menu.Item>
-            </Link>
-            <Link to="/add-friends">
-              <Menu.Item as="a">
-                <Icon name="add" />
-                Add Friends
-              </Menu.Item>
-            </Link>
-            <Link to="/goals">
-              <Menu.Item as="a">
-                <Icon name="arrow circle right" />
-                Goals
               </Menu.Item>
             </Link>
             <Link to="/crypto">
               <Menu.Item as="a">
                 <Icon name="money" />
                 Crypto
+              </Menu.Item>
+            </Link>
+            <Link to="/friend-lists">
+              <Menu.Item as="span">
+                <Icon name="users" />
+                Friend List
+              </Menu.Item>
+            </Link>
+            <Link to="/concepts">
+              <Menu.Item as="span">
+                <Icon name="idea" />
+                Concepts
+              </Menu.Item>
+            </Link>
+            <Link to="/add-friends">
+              <Menu.Item as="span">
+                <Icon name="add" />
+                Add Friends
+              </Menu.Item>
+            </Link>
+            <Link to="/goals">
+              <Menu.Item as="span">
+                <Icon name="arrow circle right" />
+                Goals
               </Menu.Item>
             </Link>
           </Sidebar>
