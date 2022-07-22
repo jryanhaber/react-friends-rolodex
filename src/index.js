@@ -6,16 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Crypto from './routes/money.routes';
 import Concepts from './components/concepts.components';
+import FriendsRoute from './routes/friends.routes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<FriendsRoute />} />
         <Route path="crypto" element={<Crypto />} />
         <Route path="invoices" element={<App />} />
-        <Route path="/friend-lists" element={<App />} />
+        <Route path="/friend-lists" element={<FriendsRoute />} />
         <Route path="/add-friends" element={<App />} />
         <Route path="/goals" element={<App />} />
         <Route path="/concepts" element={<Concepts />} />

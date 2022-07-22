@@ -12,7 +12,10 @@ class CardList extends Component {
           return (
             <Card>
               <Image
-                src="https://react.semantic-ui.com/images/avatar/large/daniel.jpg"
+                src={
+                  friend.photo ||
+                  'https://react.semantic-ui.com/images/avatar/large/daniel.jpg'
+                }
                 wrapped
                 ui={false}
               />
@@ -22,7 +25,8 @@ class CardList extends Component {
                   <span className="date">Joined in 2015</span>
                 </Card.Meta>
                 <Card.Description>
-                  {friend.name} is a musician living in {friend.address.city}.
+                  {friend.name} is a musician living in{' '}
+                  {friend?.address?.city || 'an unknown place'}.
                 </Card.Description>
               </Card.Content>
               <Card.Content extra>

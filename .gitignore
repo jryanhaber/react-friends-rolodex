@@ -22,6 +22,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-rawData.js
 
 package-lock.json
+
+src/rawData2.js
