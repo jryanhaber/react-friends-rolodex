@@ -1,22 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './routes/friends.routes';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Crypto from './routes/money.routes';
 import Concepts from './components/concepts.components';
-import FriendsRoute from './routes/friends.routes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<FriendsRoute />} />
+        <Route path="/" element={<App />} />
         <Route path="crypto" element={<Crypto />} />
         <Route path="invoices" element={<App />} />
-        <Route path="/friend-lists" element={<FriendsRoute />} />
+        <Route path="/friend-lists" element={<App />} />
         <Route path="/add-friends" element={<App />} />
         <Route path="/goals" element={<App />} />
         <Route path="/concepts" element={<Concepts />} />
