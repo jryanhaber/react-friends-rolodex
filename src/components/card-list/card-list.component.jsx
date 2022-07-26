@@ -10,7 +10,7 @@ class CardList extends Component {
       <div className="ui cards">
         {this.props.filteredFriends.map((friend) => {
           return (
-            <Card>
+            <Card key={friend.name}>
               <Image
                 src={
                   friend.photo ||

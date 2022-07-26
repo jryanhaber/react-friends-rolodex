@@ -19,58 +19,47 @@ const SideBar = ({ children }) => {
             visible={visible}
             width="thin"
           >
-            <Link to="/">
-              <Menu.Item as="span">
-                <Icon name="home" />
-                Home
-              </Menu.Item>
-            </Link>
-            <Link to="/crypto">
-              <Menu.Item as="a">
-                <Icon name="money" />
-                Crypto
-              </Menu.Item>
-            </Link>
-            <Link to="/friend-lists">
-              <Menu.Item as="span">
-                <Icon name="users" />
-                Friend List
-              </Menu.Item>
-            </Link>
-            <Link to="/concepts">
-              <Menu.Item as="span">
-                <Icon name="idea" />
-                Concepts
-              </Menu.Item>
-            </Link>
-            <Link to="/add-friends">
-              <Menu.Item as="span">
-                <Icon name="add" />
-                Add Friends
-              </Menu.Item>
-            </Link>
-            <Link to="/goals">
-              <Menu.Item as="span">
-                <Icon name="arrow circle right" />
-                Goals
-              </Menu.Item>
-            </Link>
+            <Menu.Item as={Link} to="/">
+              <Icon name="home" />
+              Home
+            </Menu.Item>
+            <Menu.Item as={Link} to="/crypto">
+              <Icon name="money" />
+              Crypto
+            </Menu.Item>
+            <Menu.Item as={Link} to="/friend-lists">
+              <Icon name="users" />
+              Friend List
+            </Menu.Item>
+            <Menu.Item as={Link} to="/concepts">
+              <Icon name="idea" />
+              Concepts
+            </Menu.Item>
+            <Menu.Item as={Link} to="/add-friends">
+              <Icon name="add" />
+              Add Friends
+            </Menu.Item>
+            <Menu.Item as={Link} to="/goals">
+              <Icon name="arrow circle right" />
+              Goals
+            </Menu.Item>
           </Sidebar>
 
           <Sidebar.Pusher>
             <Segment basic className="gradient-body">
-              <Button
-                icon
+              <Icon
+                name="align justify"
                 style={{
-                  display: 'flex',
-                  position: 'absolute',
-                  left: '14px',
-                  top: '5px'
+                  left: '50px',
+                  display: 'inherit',
+                  fontSize: '33px',
+                  top: '30px',
+                  marginTop: '10px',
+                  marginLeft: '0px',
+                  marginBottom: '-28px'
                 }}
-                onClick={(e, data) => setVisible(!visible)}
-              >
-                <Icon name="align justify" />
-              </Button>
+                onClick={() => setVisible(!visible)}
+              />
 
               {children}
             </Segment>
